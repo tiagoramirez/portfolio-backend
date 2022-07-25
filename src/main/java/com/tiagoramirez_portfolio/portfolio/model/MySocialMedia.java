@@ -21,7 +21,6 @@ import lombok.Setter;
 @Table(name = "my_social_media")
 public class MySocialMedia {
     @Id
-    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
