@@ -10,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -37,6 +38,9 @@ public class Person {
     @Column(name = "mail")
     private String mail;
 
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "about_me")
     private String about_me;
 
@@ -45,4 +49,7 @@ public class Person {
 
     @OneToMany(mappedBy = "person")
     private List<MySocialMedia> my_social_media;
+
+    @OneToOne(mappedBy = "person")
+    private Location Location;
 }

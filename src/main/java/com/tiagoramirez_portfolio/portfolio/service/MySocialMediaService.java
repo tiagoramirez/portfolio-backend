@@ -15,8 +15,8 @@ public class MySocialMediaService implements IMySocialMediaService {
     private MySocialMediaRepository mySocialMediaRepository;
 
     @Override
-    public List<MySocialMedia> getAll() {
-        return mySocialMediaRepository.findAll();
+    public List<MySocialMedia> getByPersonId(Integer personId) {
+        return mySocialMediaRepository.findByPersonIdLike(personId);
     }
 
     @Override

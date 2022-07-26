@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.MySocialMedia;
@@ -19,8 +20,8 @@ public class MySocialMediaController {
     private IMySocialMediaService mySocialMediaService;
 
     @GetMapping("/redes-sociales")
-    public List<MySocialMedia> getAll() {
-        return mySocialMediaService.getAll();
+    public List<MySocialMedia> getByPersonId(@RequestParam Integer personId) {
+        return mySocialMediaService.getByPersonId(personId);
     }
 
     @PostMapping("/redes-sociales/nuevo")
