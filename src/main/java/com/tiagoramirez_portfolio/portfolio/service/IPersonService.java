@@ -1,11 +1,13 @@
 package com.tiagoramirez_portfolio.portfolio.service;
 
-import java.util.List;
-
 import com.tiagoramirez_portfolio.portfolio.model.Person;
 
 public interface IPersonService {
-    public List<Person> getAll();
+    public Person getById(Integer id);
 
-    public void addNew(Person person);
+    public Person addNew(Person person);
+
+    public Person edit(Person person);
+
+    public void delete(Integer id);
 }

@@ -16,7 +16,6 @@ import lombok.Setter;
 
 @Getter
 @Setter
-
 @Entity
 @Table(name = "my_social_media")
 public class MySocialMedia {

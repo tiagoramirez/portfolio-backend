@@ -1,7 +1,5 @@
 package com.tiagoramirez_portfolio.portfolio.service;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +12,23 @@ public class PersonService implements IPersonService {
     private PersonRepository personRepository;
 
     @Override
-    public List<Person> getAll() {
-        return personRepository.findAll();
+    public Person getById(Integer id) {
+        return personRepository.findById(id).orElse(null);
     }
 
     @Override
-    public void addNew(Person person) {
-        personRepository.save(person);
+    public Person addNew(Person person) {
+        return personRepository.save(person);
     }
+
+    @Override
+    public Person edit(Person person) {
+        return personRepository.save(person);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        personRepository.deleteById(id);
+    }
+
 }

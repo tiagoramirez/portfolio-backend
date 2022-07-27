@@ -7,5 +7,11 @@ import com.tiagoramirez_portfolio.portfolio.model.MySocialMedia;
 public interface IMySocialMediaService {
     public List<MySocialMedia> getByPersonId(Integer personId);
 
-    public void addNew(MySocialMedia msm);
+    public MySocialMedia getById(Integer id);
+
+    public MySocialMedia addNew(MySocialMedia msm);
+
+    public MySocialMedia edit(MySocialMedia msm);
+
+    public void delete(Integer id);
 }

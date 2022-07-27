@@ -20,8 +20,23 @@ public class MySocialMediaService implements IMySocialMediaService {
     }
 
     @Override
-    public void addNew(MySocialMedia msm) {
-        mySocialMediaRepository.save(msm);
+    public MySocialMedia getById(Integer id) {
+        return mySocialMediaRepository.getReferenceById(id);
+    }
+
+    @Override
+    public MySocialMedia addNew(MySocialMedia msm) {
+        return mySocialMediaRepository.save(msm);
+    }
+
+    @Override
+    public MySocialMedia edit(MySocialMedia msm) {
+        return mySocialMediaRepository.save(msm);
+    }
+
+    @Override
+    public void delete(Integer id) {
+        mySocialMediaRepository.deleteById(id);
     }
 
 }
