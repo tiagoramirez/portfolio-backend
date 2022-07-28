@@ -23,9 +23,12 @@ public class Configuration {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @Column(name = "id_person")
+    private Integer id_person;
+
     @JsonIgnore
     @OneToOne
-    @JoinColumn(name = "id_person")
+    @JoinColumn(name = "id_person", insertable = false, updatable = false)
     private Person person;
 
     @Column(name = "show_photo")
