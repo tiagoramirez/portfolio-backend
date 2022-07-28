@@ -8,6 +8,4 @@ public interface ILocationService {
     public Location addNew(Location location);
 
     public Location edit(Location location);
-
-    public void delete(Integer id);
 }

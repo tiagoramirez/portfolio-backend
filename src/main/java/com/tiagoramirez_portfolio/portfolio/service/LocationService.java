@@ -26,10 +26,4 @@ public class LocationService implements ILocationService {
     public Location edit(Location location) {
         return locationRepository.save(location);
     }
-
-    @Override
-    public void delete(Integer id) {
-        locationRepository.deleteById(id);
-    }
-
 }
