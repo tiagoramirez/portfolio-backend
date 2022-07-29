@@ -32,7 +32,7 @@ public class MySocialMediaController {
         return mySocialMediaService.getById(id);
     }
 
-    @PostMapping("/redes-sociales/nuevo")
+    @PostMapping("/redes-sociales/crear")
     public MySocialMedia addNew(@RequestBody MySocialMedia msm) {
         return mySocialMediaService.addNew(msm);
     }
