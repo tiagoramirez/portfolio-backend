@@ -37,9 +37,9 @@ public class Person {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "about_me")
-    private String about_me;
-
     @Column(name = "photo")
     private File photo;
+
+    @Column(name = "banner")
+    private File banner;
 }

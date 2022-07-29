@@ -26,20 +26,19 @@ public class PersonController {
         return personService.getById(id);
     }
 
-    @PostMapping("/personas/crear")
-    public ResponseEntity<Person> addNew(@RequestBody Person person) {
-        personService.addNew(person);
-        return ResponseEntity.status(HttpStatus.OK).body(person);
-    }
+    // @PostMapping("/personas/crear")
+    // public ResponseEntity<Person> addNew(@RequestBody Person person) {
+    //     personService.addNew(person);
+    //     return ResponseEntity.status(HttpStatus.OK).body(person);
+    // }
 
     @PutMapping("/personas/editar")
     public Person edit(@RequestBody Person person) {
         return personService.edit(person);
     }
 
-    @DeleteMapping("/personas/borrar/{id}")
-    public void delete(@PathVariable Integer id) {
-        personService.delete(id);
-    }
-
+    // @DeleteMapping("/personas/borrar/{id}")
+    // public void delete(@PathVariable Integer id) {
+    //     personService.delete(id);
+    // }
 }
