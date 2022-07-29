@@ -36,6 +36,12 @@ public class Person {
 
     @Column(name = "description")
     private String description;
+    
+    @Column(name = "location_state")
+    private String location_state;
+    
+    @Column(name = "location_country")
+    private String location_country;
 
     @Column(name = "photo")
     private File photo;
