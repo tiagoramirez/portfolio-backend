@@ -2,6 +2,8 @@ package com.tiagoramirez_portfolio.portfolio.model;
 
 import java.io.File;
 import java.sql.Date;
+import java.time.Instant;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +28,7 @@ public class Person {
     private String full_name;
 
     @Column(name = "birthday")
-    private Date birthday;
+    private LocalDate birthday;
 
     @Column(name = "phone")
     private Integer phone;
@@ -36,10 +38,10 @@ public class Person {
 
     @Column(name = "description")
     private String description;
-    
+
     @Column(name = "location_state")
     private String location_state;
-    
+
     @Column(name = "location_country")
     private String location_country;
 

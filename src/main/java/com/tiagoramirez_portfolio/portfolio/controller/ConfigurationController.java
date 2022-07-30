@@ -24,10 +24,10 @@ public class ConfigurationController {
         return configurationService.getByPersonId(personId);
     }
 
-    @PostMapping("/configuracion/crear")
-    public Configuration addNew(@RequestBody Configuration configuration) {
-        return configurationService.addNew(configuration);
-    }
+    // @PostMapping("/configuracion/crear")
+    // public Configuration addNew(@RequestBody Configuration configuration) {
+    //     return configurationService.addNew(configuration);
+    // }
 
     @PutMapping("/configuracion/editar")
     public Configuration edit(@RequestBody Configuration configuration) {
