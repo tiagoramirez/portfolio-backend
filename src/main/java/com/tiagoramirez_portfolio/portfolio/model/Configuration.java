@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,12 +20,7 @@ public class Configuration {
     private Integer id;
 
     @Column(name = "id_person")
-    private Integer id_person;
-
-    @JsonIgnore
-    @OneToOne
-    @JoinColumn(name = "id_person", insertable = false, updatable = false)
-    private Person person;
+    private Integer personId;
 
     @Column(name = "show_photo")
     private Boolean show_photo;

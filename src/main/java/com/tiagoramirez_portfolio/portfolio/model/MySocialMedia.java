@@ -9,7 +9,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.Getter;
@@ -26,12 +25,7 @@ public class MySocialMedia {
     private Integer id;
 
     @Column(name = "id_person")
-    private Integer id_person;
-
-    @JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "id_person", insertable = false, updatable = false)
-    private Person person;
+    private Integer personId;
 
     @Column(name = "id_social_media")
     private Integer id_social_media;

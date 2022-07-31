@@ -1,8 +1,5 @@
 package com.tiagoramirez_portfolio.portfolio.model;
 
-import java.io.File;
-import java.sql.Date;
-import java.time.Instant;
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -45,9 +42,9 @@ public class Person {
     @Column(name = "location_country")
     private String location_country;
 
-    @Column(name = "photo")
-    private File photo;
+    @Column(name = "id_photo")
+    private Integer id_photo;
 
-    @Column(name = "banner")
-    private File banner;
+    @Column(name = "id_banner")
+    private Integer id_banner;
 }
