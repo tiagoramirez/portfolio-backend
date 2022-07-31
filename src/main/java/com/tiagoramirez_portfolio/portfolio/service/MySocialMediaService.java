@@ -21,7 +21,7 @@ public class MySocialMediaService implements IMySocialMediaService {
 
     @Override
     public MySocialMedia getById(Integer id) {
-        return mySocialMediaRepository.getReferenceById(id);
+        return mySocialMediaRepository.findById(id).orElse(null);
     }
 
     @Override

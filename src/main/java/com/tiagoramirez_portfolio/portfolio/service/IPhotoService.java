@@ -7,8 +7,6 @@ public interface IPhotoService {
 
     public Photo getById(Integer id);
 
-    public Photo edit(Photo photo);
-
     public byte[] compressBytes(byte[] data);
 
     public byte[] decompressBytes(byte[] data);

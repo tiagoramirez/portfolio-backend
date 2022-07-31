@@ -7,8 +7,6 @@ public interface IBannerService {
 
     public Banner getById(Integer id);
 
-    public Banner edit(Banner banner);
-
     public byte[] compressBytes(byte[] data);
 
     public byte[] decompressBytes(byte[] data);

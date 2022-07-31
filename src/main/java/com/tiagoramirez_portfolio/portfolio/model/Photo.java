@@ -17,7 +17,6 @@ import lombok.Setter;
 public class Photo {
 
     @Id
-    @Column(name = "id", insertable = false, updatable = false)
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 

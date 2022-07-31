@@ -29,11 +29,6 @@ public class BannerService implements IBannerService {
     }
 
     @Override
-    public Banner edit(Banner banner) {
-        return bannerRepository.save(banner);
-    }
-
-    @Override
     public byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);

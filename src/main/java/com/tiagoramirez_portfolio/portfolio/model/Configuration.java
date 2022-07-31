@@ -19,7 +19,7 @@ public class Configuration {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "id_person")
+    @Column(name = "id_person", unique = true)
     private Integer personId;
 
     @Column(name = "show_photo")

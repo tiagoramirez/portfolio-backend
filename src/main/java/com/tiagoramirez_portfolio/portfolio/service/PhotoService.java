@@ -29,11 +29,6 @@ public class PhotoService implements IPhotoService {
     }
 
     @Override
-    public Photo edit(Photo photo) {
-        return photoRepository.save(photo);
-    }
-
-    @Override
     public byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);
