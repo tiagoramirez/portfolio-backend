@@ -7,14 +7,14 @@ import com.tiagoramirez_portfolio.portfolio.dto.ConfigurationRepository;
 import com.tiagoramirez_portfolio.portfolio.model.Configuration;
 
 @Service
-public class ConfigurationService implements IConfigurationService{
+public class ConfigurationService implements IConfigurationService {
 
     @Autowired
     private ConfigurationRepository configurationRepository;
 
     @Override
-    public Configuration getByPersonId(Integer personId) {
-        return configurationRepository.findByPersonIdLike(personId);
+    public Configuration getByProfileId(Integer profileId) {
+        return configurationRepository.findByProfileIdLike(profileId);
     }
 
     @Override

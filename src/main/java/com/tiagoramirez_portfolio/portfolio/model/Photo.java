@@ -20,6 +20,6 @@ public class Photo {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "photo",length = Integer.MAX_VALUE)
+    @Column(name = "photo")
     private byte[] photo;
 }

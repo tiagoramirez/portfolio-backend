@@ -19,9 +19,9 @@ public class ConfigurationController {
     @Autowired
     private IConfigurationService configurationService;
 
-    @GetMapping("/configuracion/{personId}")
-    public Configuration getByPersonId(@PathVariable Integer personId) {
-        return configurationService.getByPersonId(personId);
+    @GetMapping("/configuracion/{profileId}")
+    public Configuration getByProfileId(@PathVariable Integer profileId) {
+        return configurationService.getByProfileId(profileId);
     }
 
     @PostMapping("/configuracion/crear")

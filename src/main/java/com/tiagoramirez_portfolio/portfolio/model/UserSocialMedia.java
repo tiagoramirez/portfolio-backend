@@ -18,14 +18,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "my_social_media")
-public class MySocialMedia {
+@Table(name = "user_social_media")
+public class UserSocialMedia {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "id_person")
-    private Integer personId;
+    @Column(name = "id_user")
+    private Integer userId;
 
     @Column(name = "id_social_media")
     private Integer id_social_media;

@@ -19,17 +19,14 @@ public class Configuration {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "id_person", unique = true)
-    private Integer personId;
+    @Column(name = "id_profile", unique = true)
+    private Integer profileId;
 
     @Column(name = "show_photo")
     private Boolean show_photo;
 
     @Column(name = "show_banner")
     private Boolean show_banner;
-
-    @Column(name = "show_birthday")
-    private Boolean show_birthday;
 
     @Column(name = "show_location")
     private Boolean show_location;

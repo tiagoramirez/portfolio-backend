@@ -7,5 +7,5 @@ import com.tiagoramirez_portfolio.portfolio.model.Configuration;
 
 @Repository
 public interface ConfigurationRepository extends JpaRepository<Configuration, Integer> {
-    public Configuration findByPersonIdLike(Integer personId);
+    public Configuration findByProfileIdLike(Integer profileId);
 }

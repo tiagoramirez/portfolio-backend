@@ -22,6 +22,6 @@ public class SocialMedia {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "bootstrap_class")
-    private String bootstrap_class;
+    @Column(name = "icon_class")
+    private String icon_class;
 }
