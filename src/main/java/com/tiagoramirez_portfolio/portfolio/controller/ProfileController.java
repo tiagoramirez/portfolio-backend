@@ -11,13 +11,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.Profile;
-import com.tiagoramirez_portfolio.portfolio.service.IProfileService;
+import com.tiagoramirez_portfolio.portfolio.service.ProfileService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ProfileController {
     @Autowired
-    private IProfileService profileService;
+    private ProfileService profileService;
 
     @GetMapping("/perfil/{id}")
     public Profile getById(@PathVariable Integer id) {

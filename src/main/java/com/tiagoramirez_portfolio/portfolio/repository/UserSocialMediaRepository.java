@@ -1,4 +1,4 @@
-package com.tiagoramirez_portfolio.portfolio.dto;
+package com.tiagoramirez_portfolio.portfolio.repository;
 
 import java.util.List;
 

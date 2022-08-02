@@ -1,11 +1,14 @@
-package com.tiagoramirez_portfolio.portfolio.model;
+package com.tiagoramirez_portfolio.portfolio.security.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.tiagoramirez_portfolio.portfolio.security.enums.RoleNames;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,16 +16,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "photo")
-public class Photo {
-
+@Table(name = "role")
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "id_user", unique = true)
-    private Integer userId;
-    
-    @Column(name = "photo")
-    private byte[] photo;
+    @Enumerated(EnumType.STRING)
+    private RoleNames roleName;
 }

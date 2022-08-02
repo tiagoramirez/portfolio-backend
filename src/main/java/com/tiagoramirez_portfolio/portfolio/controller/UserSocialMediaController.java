@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.UserSocialMedia;
-import com.tiagoramirez_portfolio.portfolio.service.IUserSocialMediaService;
+import com.tiagoramirez_portfolio.portfolio.service.UserSocialMediaService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class UserSocialMediaController {
     @Autowired
-    private IUserSocialMediaService userSocialMediaService;
+    private UserSocialMediaService userSocialMediaService;
 
     @GetMapping("/redes-sociales/{userId}")
     public List<UserSocialMedia> getByUserId(@PathVariable Integer userId) {

@@ -19,6 +19,9 @@ public class Banner {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @Column(name = "id_user", unique = true)
+    private Integer userId;
+
     @Column(name = "banner")
     private byte[] banner;
 }

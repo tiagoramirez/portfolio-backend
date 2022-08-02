@@ -8,14 +8,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.SocialMedia;
-import com.tiagoramirez_portfolio.portfolio.service.ISocialMediaService;
+import com.tiagoramirez_portfolio.portfolio.service.SocialMediaService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class SocialMediaController {
 
     @Autowired
-    private ISocialMediaService socialMediaService;
+    private SocialMediaService socialMediaService;
 
     @GetMapping("redes-sociales/todas")
     public List<SocialMedia> getAll() {

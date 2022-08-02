@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.Configuration;
-import com.tiagoramirez_portfolio.portfolio.service.IConfigurationService;
+import com.tiagoramirez_portfolio.portfolio.service.ConfigurationService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 public class ConfigurationController {
 
     @Autowired
-    private IConfigurationService configurationService;
+    private ConfigurationService configurationService;
 
     @GetMapping("/configuracion/{profileId}")
     public Configuration getByProfileId(@PathVariable Integer profileId) {

@@ -9,26 +9,23 @@ import java.util.zip.Inflater;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiagoramirez_portfolio.portfolio.dto.PhotoRepository;
 import com.tiagoramirez_portfolio.portfolio.model.Photo;
+import com.tiagoramirez_portfolio.portfolio.repository.PhotoRepository;
 
 @Service
-public class PhotoService implements IPhotoService {
+public class PhotoService {
 
     @Autowired
     private PhotoRepository photoRepository;
 
-    @Override
     public Photo addNew(Photo photo) {
         return photoRepository.save(photo);
     }
 
-    @Override
-    public Photo getById(Integer id) {
-        return photoRepository.findById(id).orElse(null);
+    public Photo getByUserId(Integer userId) {
+        return photoRepository.findByUserIdLike(userId);
     }
 
-    @Override
     public byte[] compressBytes(byte[] data) {
         Deflater deflater = new Deflater();
         deflater.setInput(data);
@@ -49,7 +46,6 @@ public class PhotoService implements IPhotoService {
         return outputStream.toByteArray();
     }
 
-    @Override
     public byte[] decompressBytes(byte[] data) {
         Inflater inflater = new Inflater();
         inflater.setInput(data);

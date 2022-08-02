@@ -5,16 +5,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tiagoramirez_portfolio.portfolio.dto.SocialMediaRepository;
 import com.tiagoramirez_portfolio.portfolio.model.SocialMedia;
+import com.tiagoramirez_portfolio.portfolio.repository.SocialMediaRepository;
 
 @Service
-public class SocialMediaService implements ISocialMediaService {
+public class SocialMediaService {
 
     @Autowired
     private SocialMediaRepository socialMediaRepository;
 
-    @Override
     public List<SocialMedia> getAll() {
         return socialMediaRepository.findAll();
     }
