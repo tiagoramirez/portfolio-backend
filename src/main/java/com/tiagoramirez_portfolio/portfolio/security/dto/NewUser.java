@@ -25,7 +25,6 @@ public class NewUser {
     private String full_name;
 
     @PastOrPresent
-    @NotBlank
     private LocalDate birthday;
 
     @Email

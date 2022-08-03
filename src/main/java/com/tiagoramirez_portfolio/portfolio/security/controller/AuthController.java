@@ -51,7 +51,7 @@ public class AuthController {
     @Autowired
     private JwtProvider jwtProvider;
 
-    @PostMapping("/nuevoUsuario")
+    @PostMapping("/register")
     public ResponseEntity<?> addNew(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Datos invalidos"), HttpStatus.BAD_REQUEST);

@@ -18,4 +18,8 @@ public class RoleService {
     public Role getByRoleName(RoleNames roleName) {
         return roleRepository.findByRoleName(roleName);
     }
+
+    public void addNew(Role role) {
+        roleRepository.save(role);
+    }
 }
