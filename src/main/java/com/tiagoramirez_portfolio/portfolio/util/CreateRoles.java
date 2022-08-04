@@ -1,7 +1,5 @@
 package com.tiagoramirez_portfolio.portfolio.util;
 
-import com.tiagoramirez_portfolio.portfolio.security.enums.RoleNames;
-import com.tiagoramirez_portfolio.portfolio.security.model.Role;
 import com.tiagoramirez_portfolio.portfolio.security.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

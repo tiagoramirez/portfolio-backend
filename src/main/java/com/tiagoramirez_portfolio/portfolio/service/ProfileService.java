@@ -1,5 +1,7 @@
 package com.tiagoramirez_portfolio.portfolio.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,8 +13,8 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public Profile getById(Integer id) {
-        return profileRepository.findById(id).orElse(null);
+    public List<Profile> getByUserId(Integer userId) {
+        return profileRepository.findByUserId(userId);
     }
 
     public Profile addNew(Profile profile) {

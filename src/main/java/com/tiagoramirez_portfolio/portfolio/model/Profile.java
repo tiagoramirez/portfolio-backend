@@ -20,7 +20,7 @@ public class Profile {
     private Integer id;
 
     @Column(name = "id_user")
-    private Integer id_user;
+    private Integer userId;
 
     @Column(name = "description")
     private String description;
