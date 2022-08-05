@@ -84,7 +84,8 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@Valid @RequestBody LoginUser loginUser, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Datos invalidos"), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Datos invalidos"),
+                    HttpStatus.BAD_REQUEST);
         }
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginUser.getUsername(), loginUser.getPassword()));
