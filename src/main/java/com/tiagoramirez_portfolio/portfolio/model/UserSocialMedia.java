@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.tiagoramirez_portfolio.portfolio.security.model.User;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -24,8 +26,13 @@ public class UserSocialMedia {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "id_user")
     private Integer userId;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_user", insertable = false, updatable = false)
+    private User user;
 
     @Column(name = "id_social_media")
     private Integer id_social_media;

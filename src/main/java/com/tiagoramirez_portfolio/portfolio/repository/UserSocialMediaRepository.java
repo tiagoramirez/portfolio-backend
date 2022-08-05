@@ -10,4 +10,6 @@ import com.tiagoramirez_portfolio.portfolio.model.UserSocialMedia;
 @Repository
 public interface UserSocialMediaRepository extends JpaRepository<UserSocialMedia, Integer> {
     public List<UserSocialMedia> findByUserIdLike(Integer userId);
+
+    public List<UserSocialMedia> findByUserUsername(String username);
 }

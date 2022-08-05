@@ -39,7 +39,8 @@ public class MainSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests().antMatchers("/auth/**").permitAll();
-        http.authorizeRequests().anyRequest().authenticated();
+        // http.authorizeRequests().anyRequest().authenticated();
+        http.authorizeRequests().anyRequest().permitAll();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.addFilterBefore(jwtTokenFilter(), BasicAuthenticationFilter.class);
         return http.build();

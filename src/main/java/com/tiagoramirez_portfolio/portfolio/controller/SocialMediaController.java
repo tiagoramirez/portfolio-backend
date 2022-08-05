@@ -30,9 +30,9 @@ public class SocialMediaController {
         return socialMediaService.getAll();
     }
 
-    @GetMapping("/{userId}")
-    public List<UserSocialMedia> getAllByUserId(@PathVariable Integer userId) {
-        return socialMediaService.getByUserId(userId);
+    @GetMapping("/{username}")
+    public List<UserSocialMedia> getAllByUserId(@PathVariable String username) {
+        return socialMediaService.getByUsername(username);
     }
 
     @GetMapping("")
