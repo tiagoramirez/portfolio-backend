@@ -98,6 +98,8 @@ public class AuthController {
         jwtDto.setToken(jwt);
         jwtDto.setUsername(userDetails.getUsername());
         jwtDto.setAuthorities(userDetails.getAuthorities());
+        Integer userId = userService.getByUsername(userDetails.getUsername()).getId();
+        jwtDto.setUserId(userId);
         return new ResponseEntity<JwtDto>(jwtDto, HttpStatus.OK);
     }
 
