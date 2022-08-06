@@ -23,14 +23,9 @@ public class SocialMediaService {
         return socialMediaRepository.findAll();
     }
 
-    public List<UserSocialMedia> getByUserId(Integer userId) {
-        return userSocialMediaRepository.findByUserIdLike(userId);
-    }
-
     public List<UserSocialMedia> getByUsername(String username) {
         return userSocialMediaRepository.findByUserUsername(username);
     }
-
 
     public UserSocialMedia getById(Integer usmId) {
         return userSocialMediaRepository.findById(usmId).orElse(null);

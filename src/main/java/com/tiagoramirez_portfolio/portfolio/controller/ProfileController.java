@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.model.Profile;
@@ -23,14 +24,19 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-    @GetMapping("/{userId}")
-    public List<Profile> getById(@PathVariable Integer userId) {
-        return profileService.getByUserId(userId);
+    @GetMapping("/{username}")
+    public List<Profile> getByUsername(@PathVariable String username) {
+        return profileService.getByUsername(username);
+    }
+
+    @GetMapping("")
+    public Profile getById(@RequestParam Integer id) {
+        return profileService.getById(id);
     }
 
     @PostMapping("/add")
-    public void addNew(@RequestBody Profile profile) {
-        profileService.addNew(profile);
+    public Profile addNew(@RequestBody Profile profile) {
+        return profileService.addNew(profile);
     }
 
     @PutMapping("/edit")

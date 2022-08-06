@@ -9,5 +9,5 @@ import com.tiagoramirez_portfolio.portfolio.model.Profile;
 
 @Repository
 public interface ProfileRepository extends JpaRepository<Profile, Integer> {
-    List<Profile> findByUserId(Integer userId);
+    public List<Profile> findByUserUsername(String username);
 }

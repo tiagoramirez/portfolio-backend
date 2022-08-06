@@ -13,8 +13,12 @@ public class ProfileService {
     @Autowired
     private ProfileRepository profileRepository;
 
-    public List<Profile> getByUserId(Integer userId) {
-        return profileRepository.findByUserId(userId);
+    public List<Profile> getByUsername(String username) {
+        return profileRepository.findByUserUsername(username);
+    }
+
+    public Profile getById(Integer id) {
+        return profileRepository.findById(id).orElse(null);
     }
 
     public Profile addNew(Profile profile) {
