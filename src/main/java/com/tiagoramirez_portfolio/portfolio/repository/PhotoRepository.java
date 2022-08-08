@@ -7,5 +7,5 @@ import com.tiagoramirez_portfolio.portfolio.model.Photo;
 
 @Repository
 public interface PhotoRepository extends JpaRepository<Photo, Integer> {
-    public Photo findByUserIdLike(Integer userId);
+    public Photo findByUserUsername(String username);
 }

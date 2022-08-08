@@ -24,9 +24,9 @@ public class PhotoController {
     @Autowired
     private PhotoService photoService;
 
-    @GetMapping("/{userId}")
-    public Photo getByUserId(@PathVariable Integer userId) {
-        Photo returnPhoto = photoService.getByUserId(userId);
+    @GetMapping("/{username}")
+    public Photo getByUsername(@PathVariable String username) {
+        Photo returnPhoto = photoService.getByUsername(username);
         if (returnPhoto != null) {
             returnPhoto.setPhoto(photoService.decompressBytes(returnPhoto.getPhoto()));
             return returnPhoto;

@@ -22,8 +22,8 @@ public class PhotoService {
         return photoRepository.save(photo);
     }
 
-    public Photo getByUserId(Integer userId) {
-        return photoRepository.findByUserIdLike(userId);
+    public Photo getByUsername(String username) {
+        return photoRepository.findByUserUsername(username);
     }
 
     public byte[] compressBytes(byte[] data) {

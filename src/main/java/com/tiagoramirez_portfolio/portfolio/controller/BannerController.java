@@ -24,9 +24,9 @@ public class BannerController {
     @Autowired
     private BannerService bannerService;
 
-    @GetMapping("/{userId}")
-    public Banner getByUserId(@PathVariable Integer userId) {
-        Banner returnBanner = bannerService.getByUserId(userId);
+    @GetMapping("/{username}")
+    public Banner getByUsername(@PathVariable String username) {
+        Banner returnBanner = bannerService.getByUsername(username);
         if (returnBanner != null) {
             returnBanner.setBanner(bannerService.decompressBytes(returnBanner.getBanner()));
             return returnBanner;

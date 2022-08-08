@@ -7,5 +7,5 @@ import com.tiagoramirez_portfolio.portfolio.model.Banner;
 
 @Repository
 public interface BannerRepository extends JpaRepository<Banner, Integer> {
-    public Banner findByUserIdLike(Integer userId);
+    public Banner findByUserUsername(String username);
 }

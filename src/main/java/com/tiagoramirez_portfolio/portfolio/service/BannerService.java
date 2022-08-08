@@ -22,8 +22,8 @@ public class BannerService {
         return bannerRepository.save(banner);
     }
 
-    public Banner getByUserId(Integer userId) {
-        return bannerRepository.findByUserIdLike(userId);
+    public Banner getByUsername(String username) {
+        return bannerRepository.findByUserUsername(username);
     }
 
     public byte[] compressBytes(byte[] data) {
