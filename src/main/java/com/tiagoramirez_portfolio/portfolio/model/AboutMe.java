@@ -9,31 +9,18 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 @Entity
-@Table(name = "configuration")
-public class Configuration {
+@Table(name = "about_me")
+public class AboutMe {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(name = "id_profile", unique = true)
+    @Column(name = "id_profile")
     private Integer profileId;
 
-    @Column(name = "show_photo")
-    private Boolean show_photo;
-
-    @Column(name = "show_banner")
-    private Boolean show_banner;
-
-    @Column(name = "show_location")
-    private Boolean show_location;
-
-    @Column(name = "show_phone")
-    private Boolean show_phone;
+    @Column(name = "about_me")
+    private String about_me;
 }
