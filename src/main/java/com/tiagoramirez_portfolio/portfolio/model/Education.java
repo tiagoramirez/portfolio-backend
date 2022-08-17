@@ -21,9 +21,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "experience")
-public class Experience {
-
+@Table(name = "education")
+public class Education {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
@@ -37,8 +36,14 @@ public class Experience {
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private User user;
 
-    @Column(name = "company_name")
-    private String company_name;
+    @Column(name = "type")
+    private String type;
+
+    @Column(name = "institute_name")
+    private String institute_name;
+
+    @Column(name = "title_name")
+    private String title_name;
 
     @Column(name = "isActual")
     private Boolean isActual;
@@ -48,5 +53,4 @@ public class Experience {
 
     @Column(name = "end_date")
     private LocalDate end_date;
-
 }

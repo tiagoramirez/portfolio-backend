@@ -7,25 +7,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "about_me")
-public class AboutMe {
-
+@Table(name = "description")
+public class Description {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "id_profile")
     private Integer profileId;
+    
+    @Column(name = "id_project")
+    private Integer projectId;
+    
+    @Column(name = "id_education")
+    private Integer educationId;
+    
+    @Column(name = "id_experience")
+    private Integer experienceId;
 
-    @Column(name = "about_me")
-    private String about_me;
+    @Column(name = "description")
+    private String description;
 }
