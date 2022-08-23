@@ -37,8 +37,17 @@ public class Experience {
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private User user;
 
+    @Column(name = "position")
+    private String position;
+
+    @Column(name = "type")
+    private String type;
+    
     @Column(name = "company_name")
     private String company_name;
+    
+    @Column(name = "location")
+    private String location;
 
     @Column(name = "isActual")
     private Boolean isActual;
