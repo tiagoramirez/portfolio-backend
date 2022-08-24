@@ -3,6 +3,8 @@ package com.tiagoramirez_portfolio.portfolio.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
 import com.tiagoramirez_portfolio.portfolio.model.SocialMedia;
 import com.tiagoramirez_portfolio.portfolio.model.UserSocialMedia;
 import com.tiagoramirez_portfolio.portfolio.service.SocialMediaService;
@@ -26,32 +29,65 @@ public class SocialMediaController {
     private SocialMediaService socialMediaService;
 
     @GetMapping("/all")
-    public List<SocialMedia> getAll() {
-        return socialMediaService.getAll();
+    public ResponseEntity<?> getAll() {
+        List<SocialMedia> response = socialMediaService.getAll();
+        if (response != null) {
+            return new ResponseEntity<List<SocialMedia>>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("No social media loaded"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{username}")
-    public List<UserSocialMedia> getAllByUserId(@PathVariable String username) {
-        return socialMediaService.getByUsername(username);
+    public ResponseEntity<?> getAllByUserId(@PathVariable String username) {
+        List<UserSocialMedia> response = socialMediaService.getByUsername(username);
+        if (response != null) {
+            return new ResponseEntity<List<UserSocialMedia>>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Username do not have social media loaded"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("")
-    public UserSocialMedia getById(@RequestParam Integer usmId) {
-        return socialMediaService.getById(usmId);
+    public ResponseEntity<?> getById(@RequestParam Integer usmId) {
+        UserSocialMedia response = socialMediaService.getById(usmId);
+        if (response != null) {
+            return new ResponseEntity<UserSocialMedia>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Social media does not exist"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/add")
-    public UserSocialMedia addNew(@RequestBody UserSocialMedia usm) {
-        return socialMediaService.addNew(usm);
+    public ResponseEntity<ResponseMessage> addNew(@RequestBody UserSocialMedia usm) {
+        try{
+            socialMediaService.addNew(usm);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added social media"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding social media. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/edit")
-    public UserSocialMedia edit(@RequestBody UserSocialMedia usm) {
-        return socialMediaService.edit(usm);
+    public ResponseEntity<ResponseMessage> edit(@RequestBody UserSocialMedia usm) {
+        try{
+            socialMediaService.edit(usm);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited social media"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error editing social media. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/delete/{usmId}")
-    public void delete(@PathVariable Integer usmId) {
-        socialMediaService.delete(usmId);
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Integer usmId) {
+        try{
+            socialMediaService.delete(usmId);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted social media"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting social media. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 }

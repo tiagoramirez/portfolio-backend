@@ -3,6 +3,8 @@ package com.tiagoramirez_portfolio.portfolio.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
 import com.tiagoramirez_portfolio.portfolio.model.Technologie;
 import com.tiagoramirez_portfolio.portfolio.model.UserTechnologies;
 import com.tiagoramirez_portfolio.portfolio.service.TechnologieService;
@@ -26,32 +29,65 @@ public class TechnologieController {
     private TechnologieService technologieService;
 
     @GetMapping("/all")
-    public List<Technologie> getAll() {
-        return technologieService.getAll();
+    public ResponseEntity<?> getAll() {
+        List<Technologie> response = technologieService.getAll();
+        if (response != null) {
+            return new ResponseEntity<List<Technologie>>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("No technologie loaded"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("/{username}")
-    public List<UserTechnologies> getAllByUserId(@PathVariable String username) {
-        return technologieService.getByUsername(username);
+    public ResponseEntity<?> getAllByUserId(@PathVariable String username) {
+        List<UserTechnologies> response = technologieService.getByUsername(username);
+        if (response != null) {
+            return new ResponseEntity<List<UserTechnologies>>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Username do not have technologies loaded"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @GetMapping("")
-    public UserTechnologies getById(@RequestParam Integer userTechId) {
-        return technologieService.getById(userTechId);
+    public ResponseEntity<?> getById(@RequestParam Integer userTechId) {
+        UserTechnologies response = technologieService.getById(userTechId);
+        if (response != null) {
+            return new ResponseEntity<UserTechnologies>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Technologie does not exist"),
+                HttpStatus.BAD_REQUEST);
     }
 
     @PostMapping("/add")
-    public UserTechnologies addNew(@RequestBody UserTechnologies userTech) {
-        return technologieService.addNew(userTech);
+    public ResponseEntity<ResponseMessage> addNew(@RequestBody UserTechnologies userTech) {
+        try{
+            technologieService.addNew(userTech);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added technologie"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding technologie. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/edit")
-    public UserTechnologies edit(@RequestBody UserTechnologies userTech) {
-        return technologieService.edit(userTech);
+    public ResponseEntity<ResponseMessage> edit(@RequestBody UserTechnologies userTech) {
+        try{
+            technologieService.edit(userTech);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited technologie"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error editing technologie. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 
     @DeleteMapping("/delete/{userTechId}")
-    public void delete(@PathVariable Integer userTechId) {
-        technologieService.delete(userTechId);
+    public ResponseEntity<ResponseMessage> delete(@PathVariable Integer userTechId) {
+        try{
+            technologieService.delete(userTechId);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted technologie"),HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting technologie. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
     }
 }
