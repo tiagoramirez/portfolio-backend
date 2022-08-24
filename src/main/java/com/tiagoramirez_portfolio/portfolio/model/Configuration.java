@@ -36,4 +36,14 @@ public class Configuration {
 
     @Column(name = "show_phone")
     private Boolean show_phone;
+
+    public static Configuration emptyConfiguration(Integer profileId) {
+        Configuration config = new Configuration();
+        config.setProfileId(profileId);
+        config.setShow_photo(false);
+        config.setShow_banner(false);
+        config.setShow_location(false);
+        config.setShow_phone(false);
+        return config;
+    }
 }

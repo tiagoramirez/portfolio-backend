@@ -45,4 +45,14 @@ public class Profile {
 
     @Column(name = "location_country")
     private String location_country;
+
+    public static Profile emptyProfile(Integer userId) {
+        Profile profile = new Profile();
+        profile.setUserId(userId);
+        profile.setDescription("");
+        profile.setPhone("");
+        profile.setLocation_state("");
+        profile.setLocation_country("");
+        return profile;
+    }
 }

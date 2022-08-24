@@ -25,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
+import com.tiagoramirez_portfolio.portfolio.model.AboutMe;
+import com.tiagoramirez_portfolio.portfolio.model.Configuration;
+import com.tiagoramirez_portfolio.portfolio.model.Profile;
 import com.tiagoramirez_portfolio.portfolio.security.dto.JwtDto;
 import com.tiagoramirez_portfolio.portfolio.security.dto.LoginUser;
 import com.tiagoramirez_portfolio.portfolio.security.dto.NewUser;
@@ -34,6 +37,9 @@ import com.tiagoramirez_portfolio.portfolio.security.model.Role;
 import com.tiagoramirez_portfolio.portfolio.security.model.User;
 import com.tiagoramirez_portfolio.portfolio.security.service.RoleService;
 import com.tiagoramirez_portfolio.portfolio.security.service.UserService;
+import com.tiagoramirez_portfolio.portfolio.service.AboutMeService;
+import com.tiagoramirez_portfolio.portfolio.service.ConfigurationService;
+import com.tiagoramirez_portfolio.portfolio.service.ProfileService;
 
 @RestController
 @RequestMapping("/auth")
@@ -53,6 +59,17 @@ public class AuthController {
 
     @Autowired
     private JwtProvider jwtProvider;
+
+    // START Project logic
+    @Autowired
+    private ProfileService profileService;
+
+    @Autowired
+    private ConfigurationService configurationService;
+
+    @Autowired
+    private AboutMeService aboutMeService;
+    // END Project logic
 
     @PostMapping("/register")
     public ResponseEntity<?> addNew(@Valid @RequestBody NewUser newUser, BindingResult bindingResult) {
@@ -79,8 +96,13 @@ public class AuthController {
             roles.add(roleService.getByRoleName(RoleNames.ROLE_ADMIN));
         }
         user.setRoles(roles);
-        userService.addNew(user);
-        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Usuario creado correctamente"),
+        Integer newUserId = userService.addNew(user);
+        // START Project logic
+        Integer newProfileId = profileService.addNew(Profile.emptyProfile(newUserId));
+        configurationService.addNew(Configuration.emptyConfiguration(newProfileId));
+        aboutMeService.addNew(AboutMe.emptyAboutMe(newProfileId));
+        // END Project logic
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Usuario creado correctamente", newUserId),
                 HttpStatus.CREATED);
     }
 

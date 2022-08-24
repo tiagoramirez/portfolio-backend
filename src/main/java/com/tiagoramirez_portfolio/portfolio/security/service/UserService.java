@@ -32,7 +32,8 @@ public class UserService {
         return userRepository.existsByMail(mail);
     }
 
-    public void addNew(User user) {
-        userRepository.save(user);
+    public Integer addNew(User user) {
+        User newUser = userRepository.save(user);
+        return newUser.getId();
     }
 }

@@ -31,12 +31,12 @@ public class SocialMediaService {
         return userSocialMediaRepository.findById(usmId).orElse(null);
     }
 
-    public UserSocialMedia addNew(UserSocialMedia usm) {
-        return userSocialMediaRepository.save(usm);
+    public void addNew(UserSocialMedia usm) {
+        userSocialMediaRepository.save(usm);
     }
 
-    public UserSocialMedia edit(UserSocialMedia usm) {
-        return userSocialMediaRepository.save(usm);
+    public void edit(UserSocialMedia usm) {
+        userSocialMediaRepository.save(usm);
     }
 
     public void delete(Integer usmId) {

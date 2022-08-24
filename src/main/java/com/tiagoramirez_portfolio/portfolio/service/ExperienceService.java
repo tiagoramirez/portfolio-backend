@@ -18,8 +18,8 @@ public class ExperienceService {
         return experienceRepository.findByUserUsername(username);
     }
 
-    public Experience addNew(Experience experience) {
-        return experienceRepository.save(experience);
+    public void addNew(Experience experience) {
+        experienceRepository.save(experience);
     }
 
     public void edit(Experience experience) {

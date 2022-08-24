@@ -21,12 +21,13 @@ public class ProfileService {
         return profileRepository.findById(id).orElse(null);
     }
 
-    public Profile addNew(Profile profile) {
-        return profileRepository.save(profile);
+    public Integer addNew(Profile profile) {
+        Profile newProfile = profileRepository.save(profile);
+        return newProfile.getId();
     }
 
-    public Profile edit(Profile profile) {
-        return profileRepository.save(profile);
+    public void edit(Profile profile) {
+        profileRepository.save(profile);
     }
 
     public void delete(Integer id) {

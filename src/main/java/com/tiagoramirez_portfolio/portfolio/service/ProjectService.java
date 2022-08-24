@@ -10,7 +10,7 @@ import com.tiagoramirez_portfolio.portfolio.repository.ProjectRepository;
 
 @Service
 public class ProjectService {
-    
+
     @Autowired
     private ProjectRepository projectRepository;
 
@@ -18,8 +18,8 @@ public class ProjectService {
         return projectRepository.findByUserUsername(username);
     }
 
-    public Project addNew(Project project) {
-        return projectRepository.save(project);
+    public void addNew(Project project) {
+        projectRepository.save(project);
     }
 
     public void edit(Project project) {

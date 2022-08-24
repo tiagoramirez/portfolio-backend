@@ -30,12 +30,12 @@ public class TechnologieService {
         return userTechnologiesRepository.findById(userTechId).orElse(null);
     }
 
-    public UserTechnologies addNew(UserTechnologies userTech) {
-        return userTechnologiesRepository.save(userTech);
+    public void addNew(UserTechnologies userTech) {
+        userTechnologiesRepository.save(userTech);
     }
 
-    public UserTechnologies edit(UserTechnologies userTech) {
-        return userTechnologiesRepository.save(userTech);
+    public void edit(UserTechnologies userTech) {
+        userTechnologiesRepository.save(userTech);
     }
 
     public void delete(Integer userTechId) {

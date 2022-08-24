@@ -18,8 +18,8 @@ public class BannerService {
     @Autowired
     private BannerRepository bannerRepository;
 
-    public Banner addNew(Banner banner) {
-        return bannerRepository.save(banner);
+    public void addNew(Banner banner) {
+        bannerRepository.save(banner);
     }
 
     public Banner getByUsername(String username) {

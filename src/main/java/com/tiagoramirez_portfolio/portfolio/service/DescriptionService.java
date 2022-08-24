@@ -24,8 +24,8 @@ public class DescriptionService {
         return descriptionRepository.findByProfileIdAndExperienceId(profileId, experienceId);
     }
 
-    public Description addNew(Description description) {
-        return descriptionRepository.save(description);
+    public void addNew(Description description) {
+        descriptionRepository.save(description);
     }
 
     public void edit(Description description) {

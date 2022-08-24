@@ -28,4 +28,11 @@ public class AboutMe {
 
     @Column(name = "about_me")
     private String about_me;
+
+    public static AboutMe emptyAboutMe(Integer profileId) {
+        AboutMe aboutMe = new AboutMe();
+        aboutMe.setProfileId(profileId);
+        aboutMe.setAbout_me("");
+        return aboutMe;
+    }
 }

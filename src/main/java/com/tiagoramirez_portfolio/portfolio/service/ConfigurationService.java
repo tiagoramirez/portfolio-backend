@@ -16,11 +16,11 @@ public class ConfigurationService {
         return configurationRepository.findByProfileIdLike(profileId);
     }
 
-    public Configuration addNew(Configuration msm) {
-        return configurationRepository.save(msm);
+    public void addNew(Configuration msm) {
+        configurationRepository.save(msm);
     }
 
-    public Configuration edit(Configuration msm) {
-        return configurationRepository.save(msm);
+    public void edit(Configuration msm) {
+        configurationRepository.save(msm);
     }
 }
