@@ -28,14 +28,13 @@ public class BannerController {
     private BannerService bannerService;
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> getByUsername(@PathVariable String username) {
+    public Banner getByUsername(@PathVariable String username) {
         Banner returnBanner = bannerService.getByUsername(username);
         if (returnBanner != null) {
             returnBanner.setBanner(bannerService.decompressBytes(returnBanner.getBanner()));
-            return new ResponseEntity<Banner>(returnBanner, HttpStatus.OK);
+            return returnBanner;
         }
-        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Username do not have banner"),
-                HttpStatus.BAD_REQUEST);
+        return null;
     }
 
     @PostMapping("/add/{userId}")

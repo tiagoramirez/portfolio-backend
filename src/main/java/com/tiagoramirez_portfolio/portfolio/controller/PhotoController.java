@@ -28,14 +28,13 @@ public class PhotoController {
     private PhotoService photoService;
 
     @GetMapping("/{username}")
-    public ResponseEntity<?> getByUsername(@PathVariable String username) {
+    public Photo getByUsername(@PathVariable String username) {
         Photo returnPhoto = photoService.getByUsername(username);
         if (returnPhoto != null) {
             returnPhoto.setPhoto(photoService.decompressBytes(returnPhoto.getPhoto()));
-            return new ResponseEntity<Photo>(returnPhoto, HttpStatus.OK);
+            return returnPhoto;
         }
-        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Username do not have photo"),
-                HttpStatus.BAD_REQUEST);
+        return null;
     }
 
     @PostMapping("/add/{userId}")
@@ -56,7 +55,8 @@ public class PhotoController {
     }
 
     @PutMapping("/edit/{userId}/{photoId}")
-    public ResponseEntity<ResponseMessage> updateImage(@RequestParam("photo") MultipartFile file, @PathVariable Integer userId,
+    public ResponseEntity<ResponseMessage> updateImage(@RequestParam("photo") MultipartFile file,
+            @PathVariable Integer userId,
             @PathVariable Integer photoId)
             throws IOException {
         Photo photo = new Photo();
