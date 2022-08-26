@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
@@ -37,11 +38,21 @@ public class ExperienceController {
                 HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("")
+    public ResponseEntity<?> getById(@RequestParam Integer id) {
+        Experience response = experienceService.getById(id);
+        if (response != null) {
+            return new ResponseEntity<Experience>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Experience does not exist"),
+                HttpStatus.BAD_REQUEST);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody Experience experience) {
         try {
-            experienceService.addNew(experience);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New experience added."),
+            Integer id = experienceService.addNew(experience);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New experience added.", id),
                     HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding experience. Try again."),

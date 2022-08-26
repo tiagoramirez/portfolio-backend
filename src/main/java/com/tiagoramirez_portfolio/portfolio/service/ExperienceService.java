@@ -18,8 +18,12 @@ public class ExperienceService {
         return experienceRepository.findByUserUsername(username);
     }
 
-    public void addNew(Experience experience) {
-        experienceRepository.save(experience);
+    public Experience getById(Integer id) {
+        return experienceRepository.findById(id).orElse(null);
+    }
+
+    public Integer addNew(Experience experience) {
+        return experienceRepository.save(experience).getId();
     }
 
     public void edit(Experience experience) {
