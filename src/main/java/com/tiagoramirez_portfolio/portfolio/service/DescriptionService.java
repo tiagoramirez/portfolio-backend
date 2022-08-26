@@ -36,4 +36,14 @@ public class DescriptionService {
         Description descToDelete = descriptionRepository.findByExperienceId(experienceId);
         descriptionRepository.delete(descToDelete);
     }
+
+    public void deleteEducationDescription(Integer educationId) {
+        Description descToDelete = descriptionRepository.findByEducationId(educationId);
+        descriptionRepository.delete(descToDelete);
+    }
+
+    public void deleteProjectDescription(Integer projectId) {
+        Description descToDelete = descriptionRepository.findByProjectId(projectId);
+        descriptionRepository.delete(descToDelete);
+    }
 }

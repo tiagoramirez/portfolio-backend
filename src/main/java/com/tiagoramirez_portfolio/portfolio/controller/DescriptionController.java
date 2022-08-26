@@ -100,4 +100,28 @@ public class DescriptionController {
                     HttpStatus.BAD_REQUEST);
         }
     }
+
+    @DeleteMapping("/delete/education/{educationId}")
+    public ResponseEntity<ResponseMessage> deleteEducationDescription(@PathVariable Integer educationId) {
+        try {
+            descriptionService.deleteEducationDescription(educationId);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Description deleted."),
+                    HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting description. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @DeleteMapping("/delete/project/{projectId}")
+    public ResponseEntity<ResponseMessage> deleteProjectDescription(@PathVariable Integer projectId) {
+        try {
+            descriptionService.deleteProjectDescription(projectId);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Description deleted."),
+                    HttpStatus.ACCEPTED);
+        } catch (Exception e) {
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting description. Try again."),
+                    HttpStatus.BAD_REQUEST);
+        }
+    }
 }

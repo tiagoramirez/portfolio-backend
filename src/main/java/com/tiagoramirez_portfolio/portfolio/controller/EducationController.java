@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
@@ -36,11 +37,21 @@ public class EducationController {
                 HttpStatus.BAD_REQUEST);
     }
 
+    @GetMapping("")
+    public ResponseEntity<?> getById(@RequestParam Integer id) {
+        Education response = educationService.getById(id);
+        if (response != null) {
+            return new ResponseEntity<Education>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Education does not exist"),
+                HttpStatus.BAD_REQUEST);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody Education education) {
         try {
-            educationService.addNew(education);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New education added."),
+            Integer id = educationService.addNew(education);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New education added.", id),
                     HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding education. Try again."),

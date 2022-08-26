@@ -11,4 +11,6 @@ public interface DescriptionRepository extends JpaRepository<Description,Integer
     public Description findByProfileIdAndProjectId(Integer profileId, Integer projectId);
     public Description findByProfileIdAndExperienceId(Integer profileId, Integer experienceId);
     public Description findByExperienceId( Integer experienceId);
+    public Description findByEducationId( Integer educationId);
+    public Description findByProjectId( Integer projectId);
 }

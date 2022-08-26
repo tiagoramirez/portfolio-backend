@@ -18,8 +18,12 @@ public class EducationService {
         return educationRepository.findByUserUsername(username);
     }
 
-    public void addNew(Education education) {
-        educationRepository.save(education);
+    public Education getById(Integer id) {
+        return educationRepository.findById(id).orElse(null);
+    }
+
+    public Integer addNew(Education education) {
+        return educationRepository.save(education).getId();
     }
 
     public void edit(Education education) {

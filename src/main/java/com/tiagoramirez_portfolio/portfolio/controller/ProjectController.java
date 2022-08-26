@@ -40,8 +40,8 @@ public class ProjectController {
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody Project project) {
         try {
-            projectService.addNew(project);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New project added."),
+            Integer id = projectService.addNew(project);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New project added.", id),
                     HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding project. Try again."),

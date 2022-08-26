@@ -18,8 +18,8 @@ public class ProjectService {
         return projectRepository.findByUserUsername(username);
     }
 
-    public void addNew(Project project) {
-        projectRepository.save(project);
+    public Integer addNew(Project project) {
+        return projectRepository.save(project).getId();
     }
 
     public void edit(Project project) {
