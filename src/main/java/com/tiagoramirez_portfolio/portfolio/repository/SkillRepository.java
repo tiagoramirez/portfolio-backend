@@ -3,9 +3,9 @@ package com.tiagoramirez_portfolio.portfolio.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tiagoramirez_portfolio.portfolio.model.Technologie;
+import com.tiagoramirez_portfolio.portfolio.model.Skill;
 
 @Repository
-public interface TechnologieRepository extends JpaRepository<Technologie, Integer> {
+public interface SkillRepository extends JpaRepository<Skill, Integer> {
 
 }

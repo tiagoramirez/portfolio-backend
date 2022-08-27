@@ -19,8 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "user_technologies")
-public class UserTechnologies {
+@Table(name = "user_skills")
+public class UserSkills {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
@@ -34,12 +34,12 @@ public class UserTechnologies {
     @JoinColumn(name = "id_user", insertable = false, updatable = false)
     private User user;
 
-    @Column(name = "id_technologie")
-    private Integer id_technologie;
+    @Column(name = "id_skill")
+    private Integer id_skill;
 
     @ManyToOne
-    @JoinColumn(name = "id_technologie", insertable = false, updatable = false)
-    private Technologie technologie;
+    @JoinColumn(name = "id_skill", insertable = false, updatable = false)
+    private Skill skill;
 
     @Column(name = "percentage")
     private Integer percentage;
