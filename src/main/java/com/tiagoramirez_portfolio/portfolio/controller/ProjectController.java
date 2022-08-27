@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tiagoramirez_portfolio.portfolio.dto.ResponseMessage;
@@ -34,6 +35,16 @@ public class ProjectController {
             return new ResponseEntity<List<Project>>(response, HttpStatus.OK);
         }
         return new ResponseEntity<ResponseMessage>(new ResponseMessage("Username do not have project loaded"),
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<?> getById(@RequestParam Integer id) {
+        Project response = projectService.getById(id);
+        if (response != null) {
+            return new ResponseEntity<Project>(response, HttpStatus.OK);
+        }
+        return new ResponseEntity<ResponseMessage>(new ResponseMessage("Project does not exist"),
                 HttpStatus.BAD_REQUEST);
     }
 

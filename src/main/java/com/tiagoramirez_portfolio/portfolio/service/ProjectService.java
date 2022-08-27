@@ -18,6 +18,10 @@ public class ProjectService {
         return projectRepository.findByUserUsername(username);
     }
 
+    public Project getById(Integer id) {
+        return projectRepository.findById(id).orElse(null);
+    }
+
     public Integer addNew(Project project) {
         return projectRepository.save(project).getId();
     }
