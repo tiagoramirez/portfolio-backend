@@ -34,10 +34,6 @@ public class SkillService {
         userSkillsRepository.save(userTech);
     }
 
-    public void edit(UserSkills userTech) {
-        userSkillsRepository.save(userTech);
-    }
-
     public void delete(Integer userTechId) {
         userSkillsRepository.deleteById(userTechId);
     }
