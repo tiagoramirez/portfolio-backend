@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.tiagoramirez_portfolio.portfolio.security.enums.RoleNames;
 
@@ -22,6 +23,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
+    @NotNull
     @Enumerated(EnumType.STRING)
     private RoleNames roleName;
 }

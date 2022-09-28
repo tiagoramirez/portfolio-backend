@@ -13,6 +13,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -31,20 +33,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Integer id;
 
-    @Column(name = "username")
+    @NotNull
+    @Column(name = "full_name")
+    private String full_name;
+
+    @NotNull
+    @Column(name = "username", unique = true)
     private String username;
 
+    @NotNull
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @Column(name = "password")
     private String password;
 
-    @Column(name = "full_name")
-    private String full_name;
-
+    @NotNull
+    @PastOrPresent
     @Column(name = "birthday")
     private LocalDate birthday;
 
-    @Column(name = "mail")
+    @NotNull
+    @Column(name = "mail", unique = true)
     private String mail;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
