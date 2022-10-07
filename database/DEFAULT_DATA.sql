@@ -146,14 +146,14 @@ VALUES (
         NULL,
         8,
         NULL,
-        'Actualmente me encuentro haciendo 2do anio de la carrera con un promedio de 9'
+        'Actualmente me encuentro en 2do con un promedio mayor a 9 (materias aprobadas)'
     );
 INSERT INTO `project` (id, id_user, name, link)
 VALUES (
         10,
         1,
-        'Portfolio',
-        'No disponible actualmente'
+        'Portfolio personal - Basado en LinkedIn',
+        'https://portfolio-frontend-e3451.web.app/'
     );
 INSERT INTO `description` (
         id,
@@ -169,7 +169,7 @@ VALUES (
         10,
         NULL,
         NULL,
-        'Portfolio personal hecho con HTML, CSS, TypeScript, Angular, MySql, Java'
+        'Portfolio personal hecho con HTML, CSS, TypeScript, Angular, MySql y Java Spring'
     );
 INSERT INTO `user_skills` (id, id_user, id_skill, percentage)
 VALUES (12, 1, 1, 80);
