@@ -38,7 +38,7 @@ public class SocialMediaController {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getAllByUserId(@PathVariable String username) {
         List<UserSocialMedia> response = socialMediaService.getByUsername(username);
         if (response != null) {
@@ -60,9 +60,9 @@ public class SocialMediaController {
 
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody UserSocialMedia usm) {
-        try{
+        try {
             socialMediaService.addNew(usm);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added social media"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added social media"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding social media. Try again."),
                     HttpStatus.BAD_REQUEST);
@@ -71,9 +71,9 @@ public class SocialMediaController {
 
     @PutMapping("/edit")
     public ResponseEntity<ResponseMessage> edit(@RequestBody UserSocialMedia usm) {
-        try{
+        try {
             socialMediaService.edit(usm);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited social media"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited social media"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error editing social media. Try again."),
                     HttpStatus.BAD_REQUEST);
@@ -82,9 +82,10 @@ public class SocialMediaController {
 
     @DeleteMapping("/delete/{usmId}")
     public ResponseEntity<ResponseMessage> delete(@PathVariable Integer usmId) {
-        try{
+        try {
             socialMediaService.delete(usmId);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted social media"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted social media"),
+                    HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting social media. Try again."),
                     HttpStatus.BAD_REQUEST);

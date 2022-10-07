@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,7 +23,7 @@ public class ConfigurationController {
     @Autowired
     private ConfigurationService configurationService;
 
-    @GetMapping("/{profileId}")
+    @GetMapping("/get/{profileId}")
     public ResponseEntity<?> getByProfileId(@PathVariable Integer profileId) {
         Configuration response = configurationService.getByProfileId(profileId);
         if (response != null) {
@@ -32,18 +31,6 @@ public class ConfigurationController {
         }
         return new ResponseEntity<ResponseMessage>(new ResponseMessage("Profile do not have configuration loaded"),
                 HttpStatus.BAD_REQUEST);
-    }
-
-    @PostMapping("/create")
-    public ResponseEntity<ResponseMessage> addNew(@RequestBody Configuration configuration) {
-        try {
-            configurationService.addNew(configuration);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("New configuration added."),
-                    HttpStatus.ACCEPTED);
-        } catch (Exception e) {
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding configuration. Try again."),
-                    HttpStatus.BAD_REQUEST);
-        }
     }
 
     @PutMapping("/edit")

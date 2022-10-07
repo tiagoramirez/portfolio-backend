@@ -27,7 +27,7 @@ public class ProfileController {
     @Autowired
     private ProfileService profileService;
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getByUsername(@PathVariable String username) {
         List<Profile> response = profileService.getByUsername(username);
         if (response != null) {
@@ -49,10 +49,10 @@ public class ProfileController {
 
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody Profile profile) {
-        
+
         try {
             profileService.addNew(profile);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added new profile"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added new profile"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding profile. Try again."),
                     HttpStatus.BAD_REQUEST);
@@ -63,7 +63,7 @@ public class ProfileController {
     public ResponseEntity<ResponseMessage> edit(@RequestBody Profile profile) {
         try {
             profileService.edit(profile);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited profile"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Edited profile"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error editing profile. Try again."),
                     HttpStatus.BAD_REQUEST);
@@ -74,7 +74,7 @@ public class ProfileController {
     public ResponseEntity<ResponseMessage> delete(@PathVariable Integer id) {
         try {
             profileService.delete(id);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted profile"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted profile"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting profile. Try again."),
                     HttpStatus.BAD_REQUEST);

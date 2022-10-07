@@ -44,11 +44,22 @@ public class MainSecurity {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable();
         http.authorizeRequests().antMatchers("/auth/**").permitAll();
-        // http.authorizeRequests().anyRequest().authenticated();
-        http.authorizeRequests().anyRequest().permitAll();
+        http.authorizeRequests().antMatchers("/about-me/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/banner/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/configuration/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/description/get/**/**/**").permitAll();
+        http.authorizeRequests().antMatchers("/education/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/experience/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/photo/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/profile/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/project/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/skill/all").permitAll();
+        http.authorizeRequests().antMatchers("/skill/get/**").permitAll();
+        http.authorizeRequests().antMatchers("/social-media/all").permitAll();
+        http.authorizeRequests().antMatchers("/social-media/get/**").permitAll();
+        http.authorizeRequests().anyRequest().authenticated();
         http.exceptionHandling().authenticationEntryPoint(jwtEntryPoint);
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        // http.addFilterBefore(jwtTokenFilter(), BasicAuthenticationFilter.class);
         http.addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
     }

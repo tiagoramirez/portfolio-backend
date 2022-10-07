@@ -27,7 +27,7 @@ public class EducationController {
     @Autowired
     private EducationService educationService;
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getByUsername(@PathVariable String username) {
         List<Education> response = educationService.getByUsername(username);
         if (response != null) {

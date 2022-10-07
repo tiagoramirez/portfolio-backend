@@ -28,7 +28,7 @@ public class ExperienceController {
     @Autowired
     private ExperienceService experienceService;
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getByUsername(@PathVariable String username) {
         List<Experience> response = experienceService.getByUsername(username);
         if (response != null) {

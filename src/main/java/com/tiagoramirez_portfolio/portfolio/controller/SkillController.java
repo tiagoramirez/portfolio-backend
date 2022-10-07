@@ -37,7 +37,7 @@ public class SkillController {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getAllByUserId(@PathVariable String username) {
         List<UserSkills> response = skillService.getByUsername(username);
         if (response != null) {
@@ -59,9 +59,9 @@ public class SkillController {
 
     @PostMapping("/add")
     public ResponseEntity<ResponseMessage> addNew(@RequestBody UserSkills userSkill) {
-        try{
+        try {
             skillService.addNew(userSkill);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added skill"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Added skill"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error adding skill. Try again."),
                     HttpStatus.BAD_REQUEST);
@@ -70,9 +70,9 @@ public class SkillController {
 
     @DeleteMapping("/delete/{userSkillId}")
     public ResponseEntity<ResponseMessage> delete(@PathVariable Integer userSkillId) {
-        try{
+        try {
             skillService.delete(userSkillId);
-            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted skill"),HttpStatus.ACCEPTED);
+            return new ResponseEntity<ResponseMessage>(new ResponseMessage("Deleted skill"), HttpStatus.ACCEPTED);
         } catch (Exception e) {
             return new ResponseEntity<ResponseMessage>(new ResponseMessage("Error deleting skill. Try again."),
                     HttpStatus.BAD_REQUEST);

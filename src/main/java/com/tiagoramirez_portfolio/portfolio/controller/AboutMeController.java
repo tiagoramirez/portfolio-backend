@@ -24,7 +24,7 @@ public class AboutMeController {
     @Autowired
     private AboutMeService aboutMeService;
 
-    @GetMapping("/{profileId}")
+    @GetMapping("/get/{profileId}")
     public ResponseEntity<?> getByProfileId(@PathVariable Integer profileId) {
         AboutMe response = aboutMeService.getByProfileId(profileId);
         if (response != null) {

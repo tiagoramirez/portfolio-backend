@@ -28,7 +28,7 @@ public class ProjectController {
     @Autowired
     private ProjectService projectService;
 
-    @GetMapping("/{username}")
+    @GetMapping("/get/{username}")
     public ResponseEntity<?> getByUsername(@PathVariable String username) {
         List<Project> response = projectService.getByUsername(username);
         if (response != null) {

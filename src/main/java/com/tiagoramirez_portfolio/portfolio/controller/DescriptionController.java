@@ -25,7 +25,7 @@ public class DescriptionController {
     @Autowired
     private DescriptionService descriptionService;
 
-    @GetMapping("/experience/{profileId}/{experienceId}")
+    @GetMapping("/get/experience/{profileId}/{experienceId}")
     public ResponseEntity<?> getByProfileAndExperienceId(@PathVariable Integer profileId,
             @PathVariable Integer experienceId) {
         Description response = descriptionService.getByProfileIdAndExperienceId(profileId, experienceId);
@@ -38,7 +38,7 @@ public class DescriptionController {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/education/{profileId}/{educationId}")
+    @GetMapping("/get/education/{profileId}/{educationId}")
     public ResponseEntity<?> getByProfileAndEducationId(@PathVariable Integer profileId,
             @PathVariable Integer educationId) {
         Description response = descriptionService.getByProfileIdAndEducationId(profileId, educationId);
@@ -51,7 +51,7 @@ public class DescriptionController {
                 HttpStatus.BAD_REQUEST);
     }
 
-    @GetMapping("/project/{profileId}/{projectId}")
+    @GetMapping("/get/project/{profileId}/{projectId}")
     public ResponseEntity<?> getByProfileAndProjectId(@PathVariable Integer profileId,
             @PathVariable Integer projectId) {
         Description response = descriptionService.getByProfileIdAndProjectId(profileId, projectId);
