@@ -26,15 +26,19 @@ public class SkillService {
         return userSkillsRepository.findByUserUsername(username);
     }
 
-    public UserSkills getById(Integer userTechId) {
-        return userSkillsRepository.findById(userTechId).orElse(null);
+    public UserSkills getById(Integer userSkillId) {
+        return userSkillsRepository.findById(userSkillId).orElse(null);
     }
 
-    public void addNew(UserSkills userTech) {
-        userSkillsRepository.save(userTech);
+    public void addNew(UserSkills userSkill) {
+        userSkillsRepository.save(userSkill);
     }
 
-    public void delete(Integer userTechId) {
-        userSkillsRepository.deleteById(userTechId);
+    public void edit(UserSkills userSkill) {
+        userSkillsRepository.save(userSkill);
+    }
+
+    public void delete(Integer userSkillId) {
+        userSkillsRepository.deleteById(userSkillId);
     }
 }
